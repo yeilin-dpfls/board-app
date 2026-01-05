@@ -1,0 +1,112 @@
+/* 기본 테마 및 폰트 */
+:root {
+  --primary: #4f46e5;
+  --secondary: #6366f1;
+  --danger: #ef4444;
+  --bg-gray: #f9fafb;
+}
+
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: 'Pretendard', sans-serif;
+}
+
+h1 {
+  text-align: center;
+  color: var(--primary);
+  margin-bottom: 50px; /* 타이틀 아래 간격 */
+}
+
+/* 1. 로그인/글쓰기 카드 설정 */
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  border: 1px solid #eee;
+  
+  /* 로그인 박스 내부 요소 중앙 정렬 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  /* [핵심] 카드와 아래 게시판 사이의 간격을 대폭 추가 */
+  margin-bottom: 80px; 
+}
+
+/* 폼 요소 중앙 정렬 유지 */
+form {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 2. 입력창 간격 및 한 줄 정렬 */
+input, textarea {
+  width: 100%;
+  padding: 14px;
+  margin-top: 15px; /* 입력창끼리의 간격 */
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.btn-primary {
+  width: 100%;
+  max-width: 400px;
+  margin-top: 30px; /* 버튼 위쪽 간격 확보 */
+  padding: 15px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-ghost {
+  margin-top: 20px;
+  color: #666;
+  text-decoration: underline;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* 3. [핵심] 게시판 텍스트 왼쪽 정렬 */
+.board-list-container {
+  width: 100%;
+  text-align: left; /* 전체적인 틀 왼쪽 정렬 */
+}
+
+.board-item {
+  width: 100%;
+  padding: 25px 0;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* 내부 요소들 왼쪽으로 밀기 */
+}
+
+.board-content {
+  text-align: left; /* 글 제목, 내용 왼쪽 정렬 */
+  width: 100%;
+}
+
+.badge {
+  background: #eef2ff;
+  color: var(--primary);
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+h

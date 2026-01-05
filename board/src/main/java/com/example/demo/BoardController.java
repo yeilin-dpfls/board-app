@@ -1,0 +1,59 @@
+package com.example.demo;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/boards")
+@RequiredArgsConstructor
+@CrossOrigin(origins = "*") // 프론트엔드 연결 허용
+public class BoardController {
+
+    private final BoardRepository boardRepository;
+
+    // 1. [READ] 전체 목록 조회 (GET)
+    @GetMapping
+    public List<Board> getAllBoards() {
+        return boardRepository.findAll();
+    }
+
+    // 2. [READ] 특정 게시글 상세 조회 (GET)
+    @GetMapping("/{id}")
+    public Board getBoardById(@PathVariable Long id) {
+        return boardRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + id));
+    }
+
+    // 3. [CREATE] 게시글 작성 (POST)
+    @PostMapping
+    public Board createBoard(@RequestBody Board board) {
+        return boardRepository.save(board);
+    }
+
+    // 4. [UPDATE] 게시글 수정 (PUT)
+    @PutMapping("/{id}")
+    public Board updateBoard(@PathVariable Long id, @RequestBody Board boardDetails) {
+        // 먼저 해당 ID의 글이 있는지 확인
+        Board board = boardRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + id));
+
+        // 데이터 업데이트
+        board.setTitle(boardDetails.getTitle());
+        board.setContent(boardDetails.getContent());
+
+        // 저장 (ID가 이미 존재하므로 JPA가 알아서 Update 쿼리를 날립니다)
+        return boardRepository.save(board);
+    }
+
+    // 5. [DELETE] 게시글 삭제 (DELETE)
+    @DeleteMapping("/{id}")
+    public String deleteBoard(@PathVariable Long id) {
+        Board board = boardRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + id));
+
+        boardRepository.delete(board);
+        return "게시글이 삭제되었습니다. ID: " + id;
+    }
+}
