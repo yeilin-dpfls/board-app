@@ -13,7 +13,7 @@ function App() {
   const [content, setContent] = useState('');
 
   const fetchBoards = () => {
-    axios.get("http://localhost:8080/api/boards")
+    axios.get("http://10.10.21.110:30080/api/boards")
       .then(res => setBoards(res.data))
       .catch(err => console.error("데이터 로딩 실패:", err));
   };
@@ -22,7 +22,7 @@ function App() {
 
   const handleSave = () => {
     if (!title || !content) return alert("내용을 입력해주세요! ✍️");
-    axios.post("http://localhost:8080/api/boards", { title, content, writer: user })
+    axios.post("http://10.10.21.110:30080/api/boards", { title, content, writer: user })
       .then(() => { 
         setTitle(''); 
         setContent(''); 
