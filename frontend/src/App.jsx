@@ -3,7 +3,6 @@ import axios from 'axios';
 import './App.css';
 import Login from './components/Login';
 import BoardList from './components/BoardList';
-// 1. BoardWrite 컴포넌트를 불러옵니다.
 import BoardWrite from './components/BoardWrite';
 
 function App() {
@@ -13,7 +12,7 @@ function App() {
   const [content, setContent] = useState('');
 
   const fetchBoards = () => {
-    axios.get("http://10.10.21.110:30080/api/boards")
+    axios.get("http://15.164.97.42:30080/api/boards")
       .then(res => setBoards(res.data))
       .catch(err => console.error("데이터 로딩 실패:", err));
   };
@@ -22,7 +21,7 @@ function App() {
 
   const handleSave = () => {
     if (!title || !content) return alert("내용을 입력해주세요! ✍️");
-    axios.post("http://10.10.21.110:30080/api/boards", { title, content, writer: user })
+    axios.post("http://15.164.97.42:30080/api/boards", { title, content, writer: user })
       .then(() => { 
         setTitle(''); 
         setContent(''); 
@@ -43,7 +42,6 @@ function App() {
             <button className="btn-danger" onClick={() => { setUser(null); localStorage.removeItem('user'); }}>🚪 로그아웃</button>
           </div>
           
-          {/* 2. 기존의 <div className="card"> 부분을 아래 컴포넌트로 교체합니다. */}
           <BoardWrite 
             title={title} 
             setTitle={setTitle} 
