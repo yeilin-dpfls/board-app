@@ -7,7 +7,7 @@ function Login({ onLoginSuccess }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const url = isRegister ? "http://10.10.21.110:30081/api/users/register" : "http://10.10.21.110:30081/api/users/login";
+    const url = isRegister ? "http://15.164.97.42:30081/api/users/register" : "http://15.164.97.42:30081/api/users/login";
     axios.post(url, formData).then(res => {
       if (res.data === "success" && isRegister) {
         alert("🎉 가입 성공! 로그인 해주세요.");
