@@ -7,8 +7,8 @@ import lombok.Setter;
 @Entity
 @Getter @Setter
 public class Board {
-    @Id // 기본키 (Primary Key)
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // 번호 자동 증가 (Auto Increment)
+    @Id 
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private Long id;
 
     private String title;   // 제목
