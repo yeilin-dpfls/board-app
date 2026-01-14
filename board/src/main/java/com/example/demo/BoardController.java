@@ -52,11 +52,11 @@ public class BoardController {
     // 4. [UPDATE] 게시글 수정 (PUT)
     @PutMapping("/{id}")
     public Board updateBoard(@PathVariable Long id, @RequestBody Board boardDetails) {
-        // 먼저 해당 ID의 글이 있는지 확인
+        
         Board board = boardRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + id));
 
-        // 데이터 업데이트
+
         board.setTitle(boardDetails.getTitle());
         board.setContent(boardDetails.getContent());
 
