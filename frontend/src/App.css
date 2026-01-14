@@ -16,7 +16,7 @@
 h1 {
   text-align: center;
   color: var(--primary);
-  margin-bottom: 50px; /* 타이틀 아래 간격 */
+  margin-bottom: 60px; /* 타이틀 아래 간격 */
 }
 
 /* 1. 로그인/글쓰기 카드 설정 */
