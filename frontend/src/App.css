@@ -22,7 +22,7 @@ h1 {
 /* 1. 로그인/글쓰기 카드 설정 */
 .card {
   background: white;
-  border-radius: 20px;
+  border-radius: 25px;
   padding: 40px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.05);
   border: 1px solid #eee;
