@@ -1,5 +1,5 @@
 # 1. 빌드 이미지 설정 (Java 17 기준)
-FROM eclipse-temurin:21-jdk-focal
+FROM eclipse-temurin:21-jdk
 # 2. JAR 파일 위치 변수 설정
 ARG JAR_FILE=build/libs/*-SNAPSHOT.jar
 # 3. JAR 파일을 컨테이너 내부로 복사
