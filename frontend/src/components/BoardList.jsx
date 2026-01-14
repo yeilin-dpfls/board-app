@@ -6,7 +6,7 @@ function BoardList({ boards, fetchBoards, currentUser }) {
   const [editMode, setEditMode] = useState(null);
   const [editData, setEditData] = useState({ title: '', content: '' });
 
-  const BOARD_API = "http://15.165.97.42:30080/api/boards";
+  const BOARD_API = "http://15.164.97.42:30080/api/boards";
 
   // [삭제] 기능
   const handleDelete = (id) => {
