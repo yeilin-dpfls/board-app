@@ -3,7 +3,7 @@ package com.example.memberbackend;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
-//import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.core.KafkaTemplate;
 
 @RestController
 @RequestMapping("/api/users")
@@ -12,7 +12,7 @@ import java.util.Optional;
 public class UserController {
 
     private final UserRepository userRepository;
-	//private final KafkaTemplate<String, String> kafkaTemplate;
+    private final KafkaTemplate<String, String> kafkaTemplate;
 
     // 회원가입
     @PostMapping("/register")
@@ -24,7 +24,7 @@ public class UserController {
 
 	try {
             String message = String.format("Member Join: %s", user.getUsername());
-            //kafkaTemplate.send("member-events", message);
+            kafkaTemplate.send("member-events", message);
             System.out.println(">>> Kafka Member Event Sent: " + message);
         } catch (Exception e) {
             System.err.println(">>> Kafka 전송 에러: " + e.getMessage());

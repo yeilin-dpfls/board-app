@@ -1,7 +1,7 @@
 package com.example.demo;
 
 import lombok.RequiredArgsConstructor;
-//import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.List;
 public class BoardController {
 
     private final BoardRepository boardRepository;
-    //private final KafkaTemplate<String, String> kafkaTemplate;
+    private final KafkaTemplate<String, String> kafkaTemplate;
 
     // 1. [READ] 전체 목록 조회 (GET)
     @GetMapping
@@ -40,7 +40,7 @@ public class BoardController {
                                             savedBoard.getTitle(), 
                                             writerName);
             
-            //kafkaTemplate.send("board-events", message);
+            kafkaTemplate.send("board-events", message);
             System.out.println(">>> Kafka 전송 성공");
         } catch (Exception e) {
             System.err.println(">>> Kafka 전송 에러: " + e.getMessage());
